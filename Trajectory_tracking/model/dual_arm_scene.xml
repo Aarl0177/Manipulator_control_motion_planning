@@ -1,0 +1,319 @@
+<mujoco model="dual_arm_scene">
+  <compiler angle="radian"/>
+
+  <option timestep="0.005" integrator="implicitfast"/>
+
+  <visual>
+    <global offwidth="960" offheight="720"/>
+  </visual>
+
+  <default>
+    <default class="armA_main">
+      <default class="armA_ur5e">
+        <material shininess="0.25"/>
+        <joint range="-6.28319 6.28319" armature="0.1"/>
+        <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3"/>
+        <general ctrlrange="-6.2831 6.2831" forcerange="-150 150" biastype="affine" gainprm="2000" biasprm="0 -2000 -400"/>
+        <default class="armA_size3">
+          <default class="armA_size3_limited">
+            <joint range="-3.1415 3.1415"/>
+            <general ctrlrange="-3.1415 3.1415"/>
+          </default>
+        </default>
+        <default class="armA_size1">
+          <general forcerange="-28 28" gainprm="500" biasprm="0 -500 -100"/>
+        </default>
+        <default class="armA_visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="armA_collision">
+          <geom type="capsule" group="3"/>
+          <default class="armA_eef_collision">
+            <geom type="cylinder"/>
+          </default>
+        </default>
+      </default>
+    </default>
+    <default class="armB_main">
+      <default class="armB_ur5e">
+        <material shininess="0.25"/>
+        <joint range="-6.28319 6.28319" armature="0.1"/>
+        <site size="0.001 0.005 0.005" group="4" rgba="0.5 0.5 0.5 0.3"/>
+        <general ctrlrange="-6.2831 6.2831" forcerange="-150 150" biastype="affine" gainprm="2000" biasprm="0 -2000 -400"/>
+        <default class="armB_size3">
+          <default class="armB_size3_limited">
+            <joint range="-3.1415 3.1415"/>
+            <general ctrlrange="-3.1415 3.1415"/>
+          </default>
+        </default>
+        <default class="armB_size1">
+          <general forcerange="-28 28" gainprm="500" biasprm="0 -500 -100"/>
+        </default>
+        <default class="armB_visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+        </default>
+        <default class="armB_collision">
+          <geom type="capsule" group="3"/>
+          <default class="armB_eef_collision">
+            <geom type="cylinder"/>
+          </default>
+        </default>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <material name="armA_black" class="armA_ur5e" rgba="0.033 0.033 0.033 1"/>
+    <material name="armA_jointgray" class="armA_ur5e" rgba="0.278 0.278 0.278 1"/>
+    <material name="armA_linkgray" class="armA_ur5e" rgba="0.82 0.82 0.82 1"/>
+    <material name="armA_urblue" class="armA_ur5e" rgba="0.49 0.678 0.8 1"/>
+    <material name="armB_black" class="armB_ur5e" rgba="0.033 0.033 0.033 1"/>
+    <material name="armB_jointgray" class="armB_ur5e" rgba="0.278 0.278 0.278 1"/>
+    <material name="armB_linkgray" class="armB_ur5e" rgba="0.82 0.82 0.82 1"/>
+    <material name="armB_urblue" class="armB_ur5e" rgba="0.49 0.678 0.8 1"/>
+    <mesh name="armA_base_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/base_0.obj"/>
+    <mesh name="armA_base_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/base_1.obj"/>
+    <mesh name="armA_shoulder_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_0.obj"/>
+    <mesh name="armA_shoulder_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_1.obj"/>
+    <mesh name="armA_shoulder_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_2.obj"/>
+    <mesh name="armA_upperarm_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_0.obj"/>
+    <mesh name="armA_upperarm_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_1.obj"/>
+    <mesh name="armA_upperarm_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_2.obj"/>
+    <mesh name="armA_upperarm_3" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_3.obj"/>
+    <mesh name="armA_forearm_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_0.obj"/>
+    <mesh name="armA_forearm_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_1.obj"/>
+    <mesh name="armA_forearm_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_2.obj"/>
+    <mesh name="armA_forearm_3" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_3.obj"/>
+    <mesh name="armA_wrist1_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_0.obj"/>
+    <mesh name="armA_wrist1_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_1.obj"/>
+    <mesh name="armA_wrist1_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_2.obj"/>
+    <mesh name="armA_wrist2_0" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_0.obj"/>
+    <mesh name="armA_wrist2_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_1.obj"/>
+    <mesh name="armA_wrist2_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_2.obj"/>
+    <mesh name="armA_wrist3" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist3.obj"/>
+    <mesh name="armB_base_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/base_0.obj"/>
+    <mesh name="armB_base_1" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/base_1.obj"/>
+    <mesh name="armB_shoulder_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_0.obj"/>
+    <mesh name="armB_shoulder_1" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_1.obj"/>
+    <mesh name="armB_shoulder_2" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/shoulder_2.obj"/>
+    <mesh name="armB_upperarm_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_0.obj"/>
+    <mesh name="armB_upperarm_1" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_1.obj"/>
+    <mesh name="armB_upperarm_2" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_2.obj"/>
+    <mesh name="armB_upperarm_3" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/upperarm_3.obj"/>
+    <mesh name="armB_forearm_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_0.obj"/>
+    <mesh name="armB_forearm_1" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_1.obj"/>
+    <mesh name="armB_forearm_2" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_2.obj"/>
+    <mesh name="armB_forearm_3" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/forearm_3.obj"/>
+    <mesh name="armB_wrist1_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_0.obj"/>
+    <mesh name="armB_wrist1_1" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_1.obj"/>
+    <mesh name="armB_wrist1_2" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist1_2.obj"/>
+    <mesh name="armB_wrist2_0" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_0.obj"/>
+    <mesh name="armB_wrist2_1" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_1.obj"/>
+    <mesh name="armB_wrist2_2" content_type="model/obj" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist2_2.obj"/>
+    <mesh name="armB_wrist3" file="C:\Users/aarl0/OneDrive - University of Nebraska/Desktop/PhD/Job/Untitled Folder/manipulator/ur5e_pick_place/ur5e_pick_place/model/assets/wrist3.obj"/>
+  </asset>
+
+  <worldbody>
+    <geom size="2 2 0.1" type="plane"/>
+    <site name="path_marker_0" pos="0.51 0 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_1" pos="0.509671 0.00627171 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_2" pos="0.508689 0.0124747 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_3" pos="0.507063 0.018541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_4" pos="0.504813 0.0244042 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_5" pos="0.501962 0.03 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_6" pos="0.498541 0.0352671 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_7" pos="0.494589 0.0401478 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_8" pos="0.490148 0.0445887 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_9" pos="0.485267 0.048541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_10" pos="0.48 0.0519615 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_11" pos="0.474404 0.0548127 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_12" pos="0.468541 0.0570634 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_13" pos="0.462475 0.0586889 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_14" pos="0.456272 0.0596713 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_15" pos="0.45 0.06 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_16" pos="0.443728 0.0596713 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_17" pos="0.437525 0.0586889 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_18" pos="0.431459 0.0570634 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_19" pos="0.425596 0.0548127 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_20" pos="0.42 0.0519615 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_21" pos="0.414733 0.048541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_22" pos="0.409852 0.0445887 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_23" pos="0.405411 0.0401478 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_24" pos="0.401459 0.0352671 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_25" pos="0.398038 0.03 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_26" pos="0.395187 0.0244042 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_27" pos="0.392937 0.018541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_28" pos="0.391311 0.0124747 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_29" pos="0.390329 0.00627171 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_30" pos="0.39 0 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_31" pos="0.390329 -0.00627171 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_32" pos="0.391311 -0.0124747 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_33" pos="0.392937 -0.018541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_34" pos="0.395187 -0.0244042 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_35" pos="0.398038 -0.03 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_36" pos="0.401459 -0.0352671 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_37" pos="0.405411 -0.0401478 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_38" pos="0.409852 -0.0445887 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_39" pos="0.414733 -0.048541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_40" pos="0.42 -0.0519615 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_41" pos="0.425596 -0.0548127 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_42" pos="0.431459 -0.0570634 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_43" pos="0.437525 -0.0586889 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_44" pos="0.443728 -0.0596713 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_45" pos="0.45 -0.06 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_46" pos="0.456272 -0.0596713 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_47" pos="0.462475 -0.0586889 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_48" pos="0.468541 -0.0570634 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_49" pos="0.474404 -0.0548127 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_50" pos="0.48 -0.0519615 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_51" pos="0.485267 -0.048541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_52" pos="0.490148 -0.0445887 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_53" pos="0.494589 -0.0401478 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_54" pos="0.498541 -0.0352671 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_55" pos="0.501962 -0.03 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_56" pos="0.504813 -0.0244042 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_57" pos="0.507063 -0.018541 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_58" pos="0.508689 -0.0124747 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <site name="path_marker_59" pos="0.509671 -0.00627171 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6"/>
+    <light pos="1 1 3" dir="0 0 -1"/>
+    <light name="armA_spotlight" target="armA_wrist_2_link" pos="0 -1.4 2" dir="0 0 -1" mode="targetbodycom"/>
+    <body name="armA_base" childclass="armA_ur5e" pos="0 -0.4 0" quat="0 0 0 -1">
+      <inertial pos="0 0 0" mass="4" diaginertia="0.00443333 0.00443333 0.0072"/>
+      <geom class="armA_visual" material="armA_black" mesh="armA_base_0"/>
+      <geom class="armA_visual" material="armA_jointgray" mesh="armA_base_1"/>
+      <body name="armA_shoulder_link" pos="0 0 0.163">
+        <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666"/>
+        <joint name="armA_shoulder_pan_joint" class="armA_size3" pos="0 0 0" axis="0 0 1"/>
+        <geom class="armA_visual" material="armA_urblue" mesh="armA_shoulder_0"/>
+        <geom class="armA_visual" material="armA_black" mesh="armA_shoulder_1"/>
+        <geom class="armA_visual" material="armA_jointgray" mesh="armA_shoulder_2"/>
+        <geom class="armA_collision" size="0.06 0.06" pos="0 0 -0.04"/>
+        <body name="armA_upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+          <inertial pos="0 0 0.2125" mass="8.393" diaginertia="0.133886 0.133886 0.0151074"/>
+          <joint name="armA_shoulder_lift_joint" class="armA_size3" pos="0 0 0" axis="0 1 0"/>
+          <geom class="armA_visual" material="armA_linkgray" mesh="armA_upperarm_0"/>
+          <geom class="armA_visual" material="armA_black" mesh="armA_upperarm_1"/>
+          <geom class="armA_visual" material="armA_jointgray" mesh="armA_upperarm_2"/>
+          <geom class="armA_visual" material="armA_urblue" mesh="armA_upperarm_3"/>
+          <geom class="armA_collision" size="0.06 0.06" pos="0 -0.04 0" quat="0.707107 0.707107 0 0"/>
+          <geom class="armA_collision" size="0.05 0.2" pos="0 0 0.2"/>
+          <body name="armA_forearm_link" pos="0 -0.131 0.425">
+            <inertial pos="0 0 0.196" mass="2.275" diaginertia="0.0311796 0.0311796 0.004095"/>
+            <joint name="armA_elbow_joint" class="armA_size3_limited" pos="0 0 0" axis="0 1 0"/>
+            <geom class="armA_visual" material="armA_urblue" mesh="armA_forearm_0"/>
+            <geom class="armA_visual" material="armA_linkgray" mesh="armA_forearm_1"/>
+            <geom class="armA_visual" material="armA_black" mesh="armA_forearm_2"/>
+            <geom class="armA_visual" material="armA_jointgray" mesh="armA_forearm_3"/>
+            <geom class="armA_collision" size="0.055 0.06" pos="0 0.08 0" quat="0.707107 0.707107 0 0"/>
+            <geom class="armA_collision" size="0.038 0.19" pos="0 0 0.2"/>
+            <body name="armA_wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0">
+              <inertial pos="0 0.127 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942"/>
+              <joint name="armA_wrist_1_joint" class="armA_size1" pos="0 0 0" axis="0 1 0"/>
+              <geom class="armA_visual" material="armA_black" mesh="armA_wrist1_0"/>
+              <geom class="armA_visual" material="armA_urblue" mesh="armA_wrist1_1"/>
+              <geom class="armA_visual" material="armA_jointgray" mesh="armA_wrist1_2"/>
+              <geom class="armA_collision" size="0.04 0.07" pos="0 0.05 0" quat="0.707107 0.707107 0 0"/>
+              <body name="armA_wrist_2_link" pos="0 0.127 0">
+                <inertial pos="0 0 0.1" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942"/>
+                <joint name="armA_wrist_2_joint" class="armA_size1" pos="0 0 0" axis="0 0 1"/>
+                <geom class="armA_visual" material="armA_black" mesh="armA_wrist2_0"/>
+                <geom class="armA_visual" material="armA_urblue" mesh="armA_wrist2_1"/>
+                <geom class="armA_visual" material="armA_jointgray" mesh="armA_wrist2_2"/>
+                <geom class="armA_collision" size="0.04 0.06" pos="0 0 0.04"/>
+                <geom class="armA_collision" size="0.04 0.04" pos="0 0.02 0.1" quat="0.707107 0.707107 0 0"/>
+                <body name="armA_wrist_3_link" pos="0 0 0.1">
+                  <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.1889" diaginertia="0.000132134 9.90863e-05 9.90863e-05"/>
+                  <joint name="armA_wrist_3_joint" class="armA_size1" pos="0 0 0" axis="0 1 0"/>
+                  <geom class="armA_visual" material="armA_linkgray" mesh="armA_wrist3"/>
+                  <geom class="armA_eef_collision" size="0.04 0.02" pos="0 0.08 0" quat="0.707107 0.707107 0 0"/>
+                  <site name="armA_attachment_site" pos="0 0.1 0" quat="-0.707107 0.707107 0 0"/>
+                  <body name="armA_suction_cup" pos="0 0.1 0" quat="-0.707107 0.707107 0 0">
+                    <geom size="0.022 0.025" pos="0 0 0.025" type="cylinder" contype="0" conaffinity="0" mass="0.05"/>
+                    <site name="armA_tcp" pos="0 0 0.05" size="0.004"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <light name="armB_spotlight" target="armB_wrist_2_link" pos="0 -0.6 2" dir="0 0 -1" mode="targetbodycom"/>
+    <body name="armB_base" childclass="armB_ur5e" pos="0 0.4 0" quat="0 0 0 -1">
+      <inertial pos="0 0 0" mass="4" diaginertia="0.00443333 0.00443333 0.0072"/>
+      <geom class="armB_visual" material="armB_black" mesh="armB_base_0"/>
+      <geom class="armB_visual" material="armB_jointgray" mesh="armB_base_1"/>
+      <body name="armB_shoulder_link" pos="0 0 0.163">
+        <inertial pos="0 0 0" mass="3.7" diaginertia="0.0102675 0.0102675 0.00666"/>
+        <joint name="armB_shoulder_pan_joint" class="armB_size3" pos="0 0 0" axis="0 0 1"/>
+        <geom class="armB_visual" material="armB_urblue" mesh="armB_shoulder_0"/>
+        <geom class="armB_visual" material="armB_black" mesh="armB_shoulder_1"/>
+        <geom class="armB_visual" material="armB_jointgray" mesh="armB_shoulder_2"/>
+        <geom class="armB_collision" size="0.06 0.06" pos="0 0 -0.04"/>
+        <body name="armB_upper_arm_link" pos="0 0.138 0" quat="0.707107 0 0.707107 0">
+          <inertial pos="0 0 0.2125" mass="8.393" diaginertia="0.133886 0.133886 0.0151074"/>
+          <joint name="armB_shoulder_lift_joint" class="armB_size3" pos="0 0 0" axis="0 1 0"/>
+          <geom class="armB_visual" material="armB_linkgray" mesh="armB_upperarm_0"/>
+          <geom class="armB_visual" material="armB_black" mesh="armB_upperarm_1"/>
+          <geom class="armB_visual" material="armB_jointgray" mesh="armB_upperarm_2"/>
+          <geom class="armB_visual" material="armB_urblue" mesh="armB_upperarm_3"/>
+          <geom class="armB_collision" size="0.06 0.06" pos="0 -0.04 0" quat="0.707107 0.707107 0 0"/>
+          <geom class="armB_collision" size="0.05 0.2" pos="0 0 0.2"/>
+          <body name="armB_forearm_link" pos="0 -0.131 0.425">
+            <inertial pos="0 0 0.196" mass="2.275" diaginertia="0.0311796 0.0311796 0.004095"/>
+            <joint name="armB_elbow_joint" class="armB_size3_limited" pos="0 0 0" axis="0 1 0"/>
+            <geom class="armB_visual" material="armB_urblue" mesh="armB_forearm_0"/>
+            <geom class="armB_visual" material="armB_linkgray" mesh="armB_forearm_1"/>
+            <geom class="armB_visual" material="armB_black" mesh="armB_forearm_2"/>
+            <geom class="armB_visual" material="armB_jointgray" mesh="armB_forearm_3"/>
+            <geom class="armB_collision" size="0.055 0.06" pos="0 0.08 0" quat="0.707107 0.707107 0 0"/>
+            <geom class="armB_collision" size="0.038 0.19" pos="0 0 0.2"/>
+            <body name="armB_wrist_1_link" pos="0 0 0.392" quat="0.707107 0 0.707107 0">
+              <inertial pos="0 0.127 0" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942"/>
+              <joint name="armB_wrist_1_joint" class="armB_size1" pos="0 0 0" axis="0 1 0"/>
+              <geom class="armB_visual" material="armB_black" mesh="armB_wrist1_0"/>
+              <geom class="armB_visual" material="armB_urblue" mesh="armB_wrist1_1"/>
+              <geom class="armB_visual" material="armB_jointgray" mesh="armB_wrist1_2"/>
+              <geom class="armB_collision" size="0.04 0.07" pos="0 0.05 0" quat="0.707107 0.707107 0 0"/>
+              <body name="armB_wrist_2_link" pos="0 0.127 0">
+                <inertial pos="0 0 0.1" mass="1.219" diaginertia="0.0025599 0.0025599 0.0021942"/>
+                <joint name="armB_wrist_2_joint" class="armB_size1" pos="0 0 0" axis="0 0 1"/>
+                <geom class="armB_visual" material="armB_black" mesh="armB_wrist2_0"/>
+                <geom class="armB_visual" material="armB_urblue" mesh="armB_wrist2_1"/>
+                <geom class="armB_visual" material="armB_jointgray" mesh="armB_wrist2_2"/>
+                <geom class="armB_collision" size="0.04 0.06" pos="0 0 0.04"/>
+                <geom class="armB_collision" size="0.04 0.04" pos="0 0.02 0.1" quat="0.707107 0.707107 0 0"/>
+                <body name="armB_wrist_3_link" pos="0 0 0.1">
+                  <inertial pos="0 0.0771683 0" quat="0.707107 0 0 0.707107" mass="0.1889" diaginertia="0.000132134 9.90863e-05 9.90863e-05"/>
+                  <joint name="armB_wrist_3_joint" class="armB_size1" pos="0 0 0" axis="0 1 0"/>
+                  <geom class="armB_visual" material="armB_linkgray" mesh="armB_wrist3"/>
+                  <geom class="armB_eef_collision" size="0.04 0.02" pos="0 0.08 0" quat="0.707107 0.707107 0 0"/>
+                  <site name="armB_attachment_site" pos="0 0.1 0" quat="-0.707107 0.707107 0 0"/>
+                  <body name="armB_suction_cup" pos="0 0.1 0" quat="-0.707107 0.707107 0 0">
+                    <geom size="0.022 0.025" pos="0 0 0.025" type="cylinder" contype="0" conaffinity="0" mass="0.05"/>
+                    <site name="armB_tcp" pos="0 0 0.05" size="0.004"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <general name="armA_shoulder_pan_joint_motor" joint="armA_shoulder_pan_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armA_shoulder_lift_joint_motor" joint="armA_shoulder_lift_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armA_elbow_joint_motor" joint="armA_elbow_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armA_wrist_1_joint_motor" joint="armA_wrist_1_joint" ctrllimited="true" ctrlrange="-28 28"/>
+    <general name="armA_wrist_2_joint_motor" joint="armA_wrist_2_joint" ctrllimited="true" ctrlrange="-28 28"/>
+    <general name="armA_wrist_3_joint_motor" joint="armA_wrist_3_joint" ctrllimited="true" ctrlrange="-28 28"/>
+    <general name="armB_shoulder_pan_joint_motor" joint="armB_shoulder_pan_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armB_shoulder_lift_joint_motor" joint="armB_shoulder_lift_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armB_elbow_joint_motor" joint="armB_elbow_joint" ctrllimited="true" ctrlrange="-150 150"/>
+    <general name="armB_wrist_1_joint_motor" joint="armB_wrist_1_joint" ctrllimited="true" ctrlrange="-28 28"/>
+    <general name="armB_wrist_2_joint_motor" joint="armB_wrist_2_joint" ctrllimited="true" ctrlrange="-28 28"/>
+    <general name="armB_wrist_3_joint_motor" joint="armB_wrist_3_joint" ctrllimited="true" ctrlrange="-28 28"/>
+  </actuator>
+</mujoco>

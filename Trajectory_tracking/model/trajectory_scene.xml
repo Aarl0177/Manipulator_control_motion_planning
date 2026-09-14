@@ -1,0 +1,122 @@
+<mujoco model="ur5e">
+  <compiler angle="radian" meshdir="assets" autolimits="true" />
+
+  <option integrator="implicitfast" timestep="0.005" />
+
+  <default>
+    <default class="ur5e">
+      <material specular="0.5" shininess="0.25" />
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1" />
+      <general gaintype="fixed" biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="2000" biasprm="0 -2000 -400" forcerange="-150 150" />
+      <default class="size3">
+        <default class="size3_limited">
+          <joint range="-3.1415 3.1415" />
+          <general ctrlrange="-3.1415 3.1415" />
+        </default>
+      </default>
+      <default class="size1">
+        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28" />
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom type="capsule" group="3" />
+        <default class="eef_collision">
+          <geom type="cylinder" />
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4" />
+    </default>
+  </default>
+
+  <asset>
+    <material class="ur5e" name="black" rgba="0.033 0.033 0.033 1" />
+    <material class="ur5e" name="jointgray" rgba="0.278 0.278 0.278 1" />
+    <material class="ur5e" name="linkgray" rgba="0.82 0.82 0.82 1" />
+    <material class="ur5e" name="urblue" rgba="0.49 0.678 0.8 1" />
+
+    <mesh file="base_0.obj" />
+    <mesh file="base_1.obj" />
+    <mesh file="shoulder_0.obj" />
+    <mesh file="shoulder_1.obj" />
+    <mesh file="shoulder_2.obj" />
+    <mesh file="upperarm_0.obj" />
+    <mesh file="upperarm_1.obj" />
+    <mesh file="upperarm_2.obj" />
+    <mesh file="upperarm_3.obj" />
+    <mesh file="forearm_0.obj" />
+    <mesh file="forearm_1.obj" />
+    <mesh file="forearm_2.obj" />
+    <mesh file="forearm_3.obj" />
+    <mesh file="wrist1_0.obj" />
+    <mesh file="wrist1_1.obj" />
+    <mesh file="wrist1_2.obj" />
+    <mesh file="wrist2_0.obj" />
+    <mesh file="wrist2_1.obj" />
+    <mesh file="wrist2_2.obj" />
+    <mesh file="wrist3.obj" />
+  </asset>
+
+  <worldbody>
+    <light name="spotlight" mode="targetbodycom" target="wrist_2_link" pos="0 -1 2" />
+    <body name="base" quat="0 0 0 -1" childclass="ur5e">
+      <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072" />
+      <geom mesh="base_0" material="black" class="visual" />
+      <geom mesh="base_1" material="jointgray" class="visual" />
+      <body name="shoulder_link" pos="0 0 0.163">
+        <inertial mass="3.7" pos="0 0 0" diaginertia="0.0102675 0.0102675 0.00666" />
+        <joint name="shoulder_pan_joint" class="size3" axis="0 0 1" />
+        <geom mesh="shoulder_0" material="urblue" class="visual" />
+        <geom mesh="shoulder_1" material="black" class="visual" />
+        <geom mesh="shoulder_2" material="jointgray" class="visual" />
+        <geom class="collision" size="0.06 0.06" pos="0 0 -0.04" />
+        <body name="upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
+          <inertial mass="8.393" pos="0 0 0.2125" diaginertia="0.133886 0.133886 0.0151074" />
+          <joint name="shoulder_lift_joint" class="size3" />
+          <geom mesh="upperarm_0" material="linkgray" class="visual" />
+          <geom mesh="upperarm_1" material="black" class="visual" />
+          <geom mesh="upperarm_2" material="jointgray" class="visual" />
+          <geom mesh="upperarm_3" material="urblue" class="visual" />
+          <geom class="collision" pos="0 -0.04 0" quat="1 1 0 0" size="0.06 0.06" />
+          <geom class="collision" size="0.05 0.2" pos="0 0 0.2" />
+          <body name="forearm_link" pos="0 -0.131 0.425">
+            <inertial mass="2.275" pos="0 0 0.196" diaginertia="0.0311796 0.0311796 0.004095" />
+            <joint name="elbow_joint" class="size3_limited" />
+            <geom mesh="forearm_0" material="urblue" class="visual" />
+            <geom mesh="forearm_1" material="linkgray" class="visual" />
+            <geom mesh="forearm_2" material="black" class="visual" />
+            <geom mesh="forearm_3" material="jointgray" class="visual" />
+            <geom class="collision" pos="0 0.08 0" quat="1 1 0 0" size="0.055 0.06" />
+            <geom class="collision" size="0.038 0.19" pos="0 0 0.2" />
+            <body name="wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
+              <inertial mass="1.219" pos="0 0.127 0" diaginertia="0.0025599 0.0025599 0.0021942" />
+              <joint name="wrist_1_joint" class="size1" />
+              <geom mesh="wrist1_0" material="black" class="visual" />
+              <geom mesh="wrist1_1" material="urblue" class="visual" />
+              <geom mesh="wrist1_2" material="jointgray" class="visual" />
+              <geom class="collision" pos="0 0.05 0" quat="1 1 0 0" size="0.04 0.07" />
+              <body name="wrist_2_link" pos="0 0.127 0">
+                <inertial mass="1.219" pos="0 0 0.1" diaginertia="0.0025599 0.0025599 0.0021942" />
+                <joint name="wrist_2_joint" axis="0 0 1" class="size1" />
+                <geom mesh="wrist2_0" material="black" class="visual" />
+                <geom mesh="wrist2_1" material="urblue" class="visual" />
+                <geom mesh="wrist2_2" material="jointgray" class="visual" />
+                <geom class="collision" size="0.04 0.06" pos="0 0 0.04" />
+                <geom class="collision" pos="0 0.02 0.1" quat="1 1 0 0" size="0.04 0.04" />
+                <body name="wrist_3_link" pos="0 0 0.1">
+                  <inertial mass="0.1889" pos="0 0.0771683 0" quat="1 0 0 1" diaginertia="0.000132134 9.90863e-05 9.90863e-05" />
+                  <joint name="wrist_3_joint" class="size1" />
+                  <geom material="linkgray" mesh="wrist3" class="visual" />
+                  <geom class="eef_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.04 0.02" />
+                  <site name="attachment_site" pos="0 0.1 0" quat="-1 1 0 0" />
+                <body name="suction_cup" pos="0 0.1 0" quat="-1 1 0 0"><geom type="cylinder" pos="0 0 0.025" size="0.022 0.025" mass="0.05" contype="0" conaffinity="0" /><site name="tcp" pos="0 0 0.05" size="0.004" /></body></body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  <geom type="plane" size="2 2 0.1" /><light pos="1 1 3" /><site name="path_marker_0" type="sphere" pos="0.65 0.0 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_1" type="sphere" pos="0.6494521895368274 0.010452846326765346 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_2" type="sphere" pos="0.6478147600733806 0.02079116908177593 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_3" type="sphere" pos="0.6451056516295154 0.03090169943749474 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_4" type="sphere" pos="0.6413545457642601 0.040673664307580015 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_5" type="sphere" pos="0.6366025403784439 0.049999999999999996 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_6" type="sphere" pos="0.6309016994374947 0.058778525229247314 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_7" type="sphere" pos="0.6243144825477395 0.06691306063588583 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_8" type="sphere" pos="0.6169130606358859 0.07431448254773941 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_9" type="sphere" pos="0.6087785252292474 0.08090169943749476 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_10" type="sphere" pos="0.6000000000000001 0.08660254037844387 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_11" type="sphere" pos="0.5906736643075801 0.0913545457642601 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_12" type="sphere" pos="0.5809016994374948 0.09510565162951536 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_13" type="sphere" pos="0.570791169081776 0.09781476007338058 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_14" type="sphere" pos="0.5604528463267654 0.09945218953682733 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_15" type="sphere" pos="0.55 0.1 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_16" type="sphere" pos="0.5395471536732347 0.09945218953682734 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_17" type="sphere" pos="0.5292088309182241 0.09781476007338058 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_18" type="sphere" pos="0.5190983005625053 0.09510565162951537 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_19" type="sphere" pos="0.50932633569242 0.09135454576426011 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_20" type="sphere" pos="0.5000000000000001 0.08660254037844388 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_21" type="sphere" pos="0.49122147477075273 0.08090169943749476 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_22" type="sphere" pos="0.48308693936411423 0.07431448254773945 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_23" type="sphere" pos="0.4756855174522606 0.06691306063588584 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_24" type="sphere" pos="0.4690983005625053 0.05877852522924733 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_25" type="sphere" pos="0.46339745962155615 0.049999999999999996 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_26" type="sphere" pos="0.45864545423573994 0.04067366430758001 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_27" type="sphere" pos="0.4548943483704847 0.030901699437494753 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_28" type="sphere" pos="0.45218523992661946 0.02079116908177593 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_29" type="sphere" pos="0.4505478104631727 0.01045284632676533 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_30" type="sphere" pos="0.45000000000000007 5.665538897647979e-17 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_31" type="sphere" pos="0.4505478104631727 -0.010452846326765306 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_32" type="sphere" pos="0.45218523992661946 -0.020791169081775907 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_33" type="sphere" pos="0.4548943483704847 -0.03090169943749473 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_34" type="sphere" pos="0.45864545423573994 -0.04067366430758002 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_35" type="sphere" pos="0.46339745962155615 -0.049999999999999975 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_36" type="sphere" pos="0.4690983005625053 -0.05877852522924731 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_37" type="sphere" pos="0.4756855174522606 -0.06691306063588583 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_38" type="sphere" pos="0.4830869393641142 -0.07431448254773941 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_39" type="sphere" pos="0.49122147477075273 -0.08090169943749474 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_40" type="sphere" pos="0.5 -0.08660254037844385 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_41" type="sphere" pos="0.5093263356924199 -0.09135454576426005 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_42" type="sphere" pos="0.5190983005625053 -0.09510565162951536 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_43" type="sphere" pos="0.529208830918224 -0.09781476007338057 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_44" type="sphere" pos="0.5395471536732346 -0.09945218953682733 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_45" type="sphere" pos="0.55 -0.1 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_46" type="sphere" pos="0.5604528463267654 -0.09945218953682734 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_47" type="sphere" pos="0.570791169081776 -0.09781476007338057 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_48" type="sphere" pos="0.5809016994374948 -0.09510565162951537 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_49" type="sphere" pos="0.5906736643075801 -0.09135454576426011 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_50" type="sphere" pos="0.6000000000000001 -0.08660254037844387 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_51" type="sphere" pos="0.6087785252292474 -0.08090169943749476 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_52" type="sphere" pos="0.6169130606358859 -0.07431448254773941 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_53" type="sphere" pos="0.6243144825477395 -0.06691306063588581 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_54" type="sphere" pos="0.6309016994374947 -0.05877852522924734 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_55" type="sphere" pos="0.6366025403784439 -0.04999999999999997 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_56" type="sphere" pos="0.6413545457642602 -0.040673664307580015 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_57" type="sphere" pos="0.6451056516295154 -0.030901699437494767 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_58" type="sphere" pos="0.6478147600733806 -0.0207911690817759 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /><site name="path_marker_59" type="sphere" pos="0.6494521895368274 -0.010452846326765342 0.3" size="0.003" rgba="0.2 0.85 0.45 0.6" /></worldbody>
+
+  <actuator><motor name="shoulder_pan_joint_motor" joint="shoulder_pan_joint" ctrllimited="true" ctrlrange="-150.0 150.0" /><motor name="shoulder_lift_joint_motor" joint="shoulder_lift_joint" ctrllimited="true" ctrlrange="-150.0 150.0" /><motor name="elbow_joint_motor" joint="elbow_joint" ctrllimited="true" ctrlrange="-150.0 150.0" /><motor name="wrist_1_joint_motor" joint="wrist_1_joint" ctrllimited="true" ctrlrange="-28.0 28.0" /><motor name="wrist_2_joint_motor" joint="wrist_2_joint" ctrllimited="true" ctrlrange="-28.0 28.0" /><motor name="wrist_3_joint_motor" joint="wrist_3_joint" ctrllimited="true" ctrlrange="-28.0 28.0" /></actuator><visual><global offwidth="960" offheight="720" /></visual></mujoco>
