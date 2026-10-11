@@ -1,4 +1,4 @@
-#Projects: 
+# Projects: 
 
 ## Rigid-Body Dynamics + IK + Torque & Impedance Control (2-DoF Arm)
 
